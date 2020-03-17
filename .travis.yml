@@ -4,11 +4,24 @@ language: node_js
 node_js:
   - 10.15.3
 
-#运行的脚本命令
-script:
-  - npm run build
+services:
+  - docker
 
 #指定分支，只有指定的分支提交时才会运行脚本
 branches:
   only:
     - master
+
+install:
+  - yarn
+
+#运行的脚本命令
+
+script:
+  - yarn build
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+  - docker build -t irislian199092/test-ci:latest .
+
+  - docker push irislian199092/test-ci:latest
