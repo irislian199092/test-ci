@@ -1,6 +1,6 @@
 <template>
-  <div id="app"> 
-   <p>this is  a test </p>
+  <div id="app">
+    <p>this is a test from aliyun </p>
   </div>
 </template>
 
